@@ -1,0 +1,17 @@
+services:
+  iot-edge-device:
+    image: egilhansen/iothub-edge-device:1.0.0-amd64
+    restart: unless-stopped
+    privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    environment:
+      - connectionString="<IOT-EDGE-DEVICE-CONNECTION-STRING>"
+    hostname: edgedevice1
+    dns: 8.8.8.8
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "10"
+        max-size: "200k"

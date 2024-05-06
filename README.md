@@ -20,6 +20,30 @@ az iot hub device-identity connection-string show --device-id <DEVICE_ID> --hub-
 docker run -d --restart unless-stopped --privileged -it -v /var/run/docker.sock:/var/run/docker.sock -v /sys/fs/cgroup:/sys/fs/cgroup:rw -e connectionString='<IOT_EDGE_DEVICE_CONNECTION_STRING>' --hostname=edgedevice1 --name iot-edge-device egilhansen/iothub-edge-device:1.0.0-amd64 --dns 8.8.8.8 --log-driver "json-file" --log-opt "max-file=10" --log-opt "max-size=200k"
 ```
 
+Or use the following docker compoose (with the edge device connection string replaced):
+
+```
+services:
+  iot-edge-device:
+    image: egilhansen/iothub-edge-device:1.0.0-amd64
+    restart: unless-stopped
+    privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    environment:
+      - connectionString="<IOT-EDGE-DEVICE-CONNECTION-STRING>"
+    hostname: edgedevice1
+    dns: 8.8.8.8
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "10"
+        max-size: "200k"
+```
+
+And then run: `docker compose up`.
+
 3. Monitor IoT edge init
 
 ```shell
