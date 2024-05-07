@@ -1,6 +1,6 @@
 services:
   iot-edge-device:
-    image: egilhansen/iothub-edge-device:1.0.0-amd64
+    image: egilhansen/iothub-edge-device:1.5.0-amd64
     restart: unless-stopped
     privileged: true
     volumes:
