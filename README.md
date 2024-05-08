@@ -1,5 +1,5 @@
 # IoT Edge Device in Docker
-A docker image that enables running the aziot-edge 1.4 in a docker container.
+A docker image that enables running the aziot-edge 1.5 in a docker container.
 
 ## Getting started
 
@@ -17,7 +17,7 @@ Then the following is needed:
 2. **Start the container:**
 
     ```shell
-    docker run -d --restart unless-stopped --privileged -it -v /var/run/docker.sock:/var/run/docker.sock -v /sys/fs/cgroup:/sys/fs/cgroup:rw -e connectionString='<IOT_EDGE_DEVICE_CONNECTION_STRING>' --hostname=edgedevice1 --name iot-edge-device egilhansen/iothub-edge-device:1.0.0-amd64 --dns 8.8.8.8 --log-driver "json-file" --log-opt "max-file=10" --log-opt "max-size=200k"
+    docker run -d --restart unless-stopped --privileged -it -v /var/run/docker.sock:/var/run/docker.sock -v /sys/fs/cgroup:/sys/fs/cgroup:rw -e connectionString='<IOT_EDGE_DEVICE_CONNECTION_STRING>' --hostname=edgedevice1 --name iot-edge-device egilhansen/iothub-edge-device:1.5.0-amd64 --dns 8.8.8.8 --log-driver "json-file" --log-opt "max-file=10" --log-opt "max-size=200k"
     ```
 
     Or use the following docker-compose (with the edge device connection string replaced):
@@ -25,7 +25,7 @@ Then the following is needed:
     ```yml
     services:
     iot-edge-device:
-        image: egilhansen/iothub-edge-device:1.0.0-amd64
+        image: egilhansen/iothub-edge-device:1.5.0-amd64
         restart: unless-stopped
         privileged: true
         volumes:
