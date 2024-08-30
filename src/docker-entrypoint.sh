@@ -10,7 +10,7 @@ name = "edgeAgent"
 type = "docker"
 
 [agent.config]
-image = "mcr.microsoft.com/azureiotedge-agent:1.5"
+image = "mcr.microsoft.com/azureiotedge-agent:1.5.7"
 createOptions = { HostConfig = { Binds = ["/iotedge/storage:/iotedge/storage"] } }
 
 [connect]
